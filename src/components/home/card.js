@@ -54,7 +54,7 @@ function tourCard({
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            {from} - {to}
+            {changeName(from)} - {changeName(to)}
           </Typography>
           <div>
             <QueryBuilder />
@@ -91,3 +91,10 @@ function tourCard({
 }
 
 export default compose(pure)(tourCard);
+
+function changeName(name) {
+  if (name === "Санкт-Петербург") {
+    return "Петербург";
+  }
+  return name;
+}

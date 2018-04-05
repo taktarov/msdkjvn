@@ -104,7 +104,14 @@ function Home({
                 />
               </div>
             )}
-            <img src={TourRadar} height={40} alt="" className="logo" />
+            <Typography
+              variant="title"
+              color="inherit"
+              className="drawer-toolbar"
+            >
+              TOURRADAR
+            </Typography>
+            {/* <img src={TourRadar} height={40} alt="" className="logo" /> */}
           </Toolbar>
           <Drawer
             anchor="left"
@@ -161,17 +168,31 @@ function Home({
                     ))}
                   </Select>
                 </div>
-                <Button
-                  variant="raised"
-                  color="primary"
-                  className="reset"
-                  onClick={() => {
-                    onSetArrivalCity(["Везде"]);
-                    onSetDepartureCity("Россия");
-                  }}
-                >
-                  Сбросить фильтры
-                </Button>
+                <div>
+                  <div className="close">
+                    <Button
+                      variant="raised"
+                      color="primary"
+                      onClick={() => onCloseDrawer()}
+                      className="close"
+                    >
+                      Применить фильтры
+                    </Button>
+                  </div>
+                  <div className="reset">
+                    <Button
+                      variant="raised"
+                      color="primary"
+                      onClick={() => {
+                        onSetArrivalCity(["Везде"]);
+                        onSetDepartureCity("Россия");
+                        onCloseDrawer();
+                      }}
+                    >
+                      Сбросить фильтры
+                    </Button>
+                  </div>
+                </div>
                 <InputLabel htmlFor="departure" className="email">
                   <a
                     href="mailto:helpme@turradar.ru?subject=TourRadar Web"
@@ -191,7 +212,7 @@ function Home({
         ) : (
           <div>
             <div className="emptyData">
-              <img src={Empty} height={500} width={500} alt="" />
+              <img src={Empty} height={280} width={280} alt="" />
             </div>
             <InputLabel htmlFor="departure" className="input-label">
               Упс. Мы не нашли дешевых туров по вашему запросу, попробуйте
@@ -225,21 +246,20 @@ function Home({
             </span>
           }
         />
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          open={upd}
-          onClose={() => onCloseNot()}
-          SnackbarContentProps={{
-            "aria-describedby": "message-id"
-          }}
-          transitionDuration={{ enter: 5000 }}
-          autoHideDuration={4000}
-          message={<span id="message-id">База данных туров обновлена</span>}
-        />
       </MuiThemeProvider>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center"
+        }}
+        open={upd}
+        onClose={() => onCloseNot()}
+        SnackbarContentProps={{
+          "aria-describedby": "message-id"
+        }}
+        autoHideDuration={4000}
+        message={<span id="message-id">База данных туров обновлена</span>}
+      />
     </div>
   );
 }
