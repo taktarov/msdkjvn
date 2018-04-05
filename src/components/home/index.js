@@ -237,7 +237,7 @@ function Home({
           }}
           transitionDuration={{ enter: 5000 }}
           autoHideDuration={4000}
-          message={<span id="message-id">База данных туров обнвлена</span>}
+          message={<span id="message-id">База данных туров обновлена</span>}
         />
       </MuiThemeProvider>
     </div>
