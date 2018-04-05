@@ -231,7 +231,7 @@ function Home({
             </InputLabel>
           </div>
         )}
-        <Snackbar
+        {/* <Snackbar
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "center"
@@ -247,9 +247,9 @@ function Home({
               Последние настройки фильтров были восстановлены
             </span>
           }
-        />
+        /> */}
       </MuiThemeProvider>
-      <Snackbar
+      {/* <Snackbar
         anchorOrigin={{
           vertical: "top",
           horizontal: "center"
@@ -261,7 +261,7 @@ function Home({
         }}
         autoHideDuration={4000}
         message={<span id="message-id">База данных туров обновлена</span>}
-      />
+      /> */}
     </div>
   );
 }

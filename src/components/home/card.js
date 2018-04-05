@@ -47,11 +47,7 @@ function tourCard({
   return (
     <div>
       <Card className="card">
-        <CardMedia
-          className="media"
-          image={imageUrl}
-          title="Contemplative Reptile"
-        />
+        <CardMedia className="media" image={imageUrl} title="" />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
             {changeName(from)} - {changeName(to)}
