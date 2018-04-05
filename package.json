@@ -1,0 +1,41 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^4.12.1",
+    "history": "^4.7.2",
+    "immutable": "^3.8.2",
+    "material-ui": "^1.0.0-beta.39",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "moment": "^2.22.0",
+    "react": "^16.2.0",
+    "react-app-rewire-less": "^2.1.1",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "1.1.1",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-duck": "^1.0.2",
+    "redux-saga": "^0.16.0",
+    "redux-saga-firebase": "^0.12.0",
+    "reselect": "^3.0.1"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass": "^4.8.3",
+    "react-app-rewire-css-modules": "github:codebandits/react-app-rewire-css-modules",
+    "react-app-rewire-less-modules": "^1.3.0",
+    "react-app-rewired": "^1.5.0",
+    "redux-devtools": "^3.4.1",
+    "sass-loader": "^6.0.7"
+  }
+}
