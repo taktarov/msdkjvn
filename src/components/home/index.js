@@ -114,6 +114,7 @@ function Home({
             {/* <img src={TourRadar} height={40} alt="" className="logo" /> */}
           </Toolbar>
           <Drawer
+            className="bestDrawer"
             anchor="left"
             open={drawerOpened}
             children={
@@ -183,6 +184,7 @@ function Home({
                     <Button
                       variant="raised"
                       color="primary"
+                      className="cancel"
                       onClick={() => {
                         onSetArrivalCity(["Везде"]);
                         onSetDepartureCity("Россия");
