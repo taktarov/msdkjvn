@@ -1,6 +1,7 @@
 import React from "react";
 import { compose, pure } from "recompose";
 import Card, { CardContent, CardMedia, CardActions } from "material-ui/Card";
+import { Link } from "react-router-dom";
 import FlightTakeoff from "material-ui-icons/FlightTakeoff";
 import QueryBuilder from "material-ui-icons/QueryBuilder";
 import Typography from "material-ui/Typography";
@@ -70,13 +71,11 @@ function tourCard({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary" className="button">
-            <a href={link} target="_blank" className="link">
-              <Typography component="p" class="description-agent">
-                Выбрать тур
-              </Typography>
-            </a>
-          </Button>
+          <Link to={link} className="link" target="_blank">
+            <Typography component="p" class="description-agent-1">
+              Выбрать тур
+            </Typography>
+          </Link>
           <Typography component="p" class="agent">
             {provider}
           </Typography>
