@@ -144,7 +144,7 @@ function Home({
                       id: "departure"
                     }}
                   >
-                    <MenuItem value={"Россия"}>Россия</MenuItem>
+                    <MenuItem value={"Везде"}>Везде</MenuItem>
                     <MenuItem value={"Москва"}>Москва</MenuItem>
                     <MenuItem value={"Санкт-Петербург"}>
                       Санкт-Петербург
@@ -188,7 +188,7 @@ function Home({
                       className="cancel"
                       onClick={() => {
                         onSetArrivalCity(["Везде"]);
-                        onSetDepartureCity("Россия");
+                        onSetDepartureCity("Везде");
                         onCloseDrawer();
                       }}
                     >

@@ -48,13 +48,13 @@ function filterData(data, departureCity, arrivalCity) {
   const ArrivalCity = Array.from(arrivalCity);
   if (output(data).length > 6) {
     if (ArrivalCity[0] === "Везде") {
-      if (departureCity === "Россия") {
+      if (departureCity === "Везде") {
         return output(data);
       }
       const someData = output(data).filter(item => item.from === departureCity);
       return someData;
     }
-    if (departureCity !== "" && departureCity !== "Россия") {
+    if (departureCity !== "" && departureCity !== "Везде") {
       const outputData = output(data).filter(
         item => item.from === departureCity
       );

@@ -29,7 +29,7 @@ const initialState = fromJS({
   departureCity:
     departureCity !== null && departureCity.length > 0
       ? departureCity
-      : "Россия",
+      : "Везде",
   arrivalCity:
     arrivalCity !== null ? filterAll(JSON.parse(arrivalCity)) : ["Везде"],
   data: {},
