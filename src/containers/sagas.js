@@ -1,7 +1,13 @@
 import firebase from "firebase";
 import ReduxSagaFirebase from "redux-saga-firebase";
-import { fork, call, put, take } from "redux-saga/effects";
-import { updated } from "./ducks";
+import { fork, call, put, take, takeLatest } from "redux-saga/effects";
+import { delay } from "redux-saga";
+import {
+  updated,
+  SET_DEPARTURE_CITY,
+  SET_ARRIVAL_CITY,
+  turnOffLoading
+} from "./ducks";
 const myFirebaseApp = firebase.initializeApp({
   apiKey: "AIzaSyC8aOh6XWun9MaTWHDF2ybrKoIF2YNdOqY",
   authDomain: "tourlane-1235.firebaseapp.com",
@@ -13,6 +19,8 @@ const myFirebaseApp = firebase.initializeApp({
 const rsf = new ReduxSagaFirebase(myFirebaseApp);
 export default function* rootSaga() {
   yield fork(firebaseConnectSaga);
+  yield takeLatest(SET_DEPARTURE_CITY, workImitationSaga);
+  yield takeLatest(SET_ARRIVAL_CITY, workImitationSaga);
 }
 
 function* firebaseConnectSaga() {
@@ -21,4 +29,9 @@ function* firebaseConnectSaga() {
     const { value: todos } = yield take(channel);
     yield put(updated(todos));
   }
+}
+
+function* workImitationSaga() {
+  yield call(delay, 800);
+  yield put(turnOffLoading());
 }

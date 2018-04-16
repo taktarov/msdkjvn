@@ -24,6 +24,11 @@ export const updated = ducks.createAction(UPDATED);
 const departureCity = localStorage.getItem("departureCity");
 const arrivalCity = localStorage.getItem("arrivalCity");
 
+export const TURN_OFF_LOADING = ducks.defineType("TURN_OFF_LOADING");
+export const turnOffLoading = ducks.createAction(TURN_OFF_LOADING);
+
+TURN_OFF_LOADING;
+
 const initialState = fromJS({
   drawerOpened: false,
   departureCity:
@@ -34,7 +39,8 @@ const initialState = fromJS({
     arrivalCity !== null ? filterAll(JSON.parse(arrivalCity)) : ["Везде"],
   data: {},
   countriesList: [],
-  not: false
+  not: false,
+  loading: true
 });
 
 export default ducks.createReducer(
@@ -44,12 +50,15 @@ export default ducks.createReducer(
     [CLOSE_NOT]: state => state.setIn(["not"], false),
     [SET_DEPARTURE_CITY]: (state, { payload }) => {
       localStorage.setItem("departureCity", payload);
-      return state.setIn(["departureCity"], payload);
+      return state.setIn(["departureCity"], payload).setIn(["loading"], true);
     },
 
+    [TURN_OFF_LOADING]: state => state.setIn(["loading"], false),
     [SET_ARRIVAL_CITY]: (state, { payload }) => {
       localStorage.setItem("arrivalCity", JSON.stringify(Array.from(payload)));
-      return state.setIn(["arrivalCity"], filterAll(Array.from(payload)));
+      return state
+        .setIn(["arrivalCity"], filterAll(Array.from(payload)))
+        .setIn(["loading"], true);
     },
     [UPDATED]: (state, { payload }) =>
       state
@@ -59,6 +68,7 @@ export default ducks.createReducer(
           Array.from(new Set(output(payload).map(item => item.to || item.To)))
         )
         .setIn(["not"], true)
+        .setIn(["loading"], false)
   },
   initialState
 );

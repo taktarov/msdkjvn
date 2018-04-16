@@ -16,6 +16,7 @@ const mapStateToProps = state => ({
   departureCity: state.travelApp.get("departureCity"),
   arrivalCity: Array.from(state.travelApp.get("arrivalCity")),
   upd: state.travelApp.get("not"),
+  loading: state.travelApp.get("loading"),
   data: filterDate(
     sortItems(
       filterData(

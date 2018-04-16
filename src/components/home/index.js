@@ -11,8 +11,11 @@ import Select from "material-ui/Select";
 import IconButton from "material-ui/IconButton";
 import Input, { InputLabel } from "material-ui/Input";
 import MenuIcon from "material-ui-icons/Menu";
+import HelpIcon from "material-ui-icons/Help";
 import { MenuItem } from "material-ui/Menu";
 import Snackbar from "material-ui/Snackbar";
+import Card, { CardActions, CardContent } from "material-ui/Card";
+import { CircularProgress } from "material-ui/Progress";
 import Button from "material-ui/Button";
 import CardList from "./cardList";
 import "./index.less";
@@ -45,7 +48,8 @@ Home.propTypes = {
   countriesList: arrayOf(string),
   arrivalCity: arrayOf(string),
   data: arrayOf(object),
-  upd: bool
+  upd: bool,
+  loading: bool
 };
 
 Home.defaultProps = {
@@ -55,7 +59,8 @@ Home.defaultProps = {
   countriesList: [],
   arrivalCity: [],
   data: [],
-  upd: false
+  upd: false,
+  loading: true
 };
 
 function Home({
@@ -71,7 +76,8 @@ function Home({
   notificationVisibility,
   setVisibilityNotification,
   upd,
-  onCloseNot
+  onCloseNot,
+  loading
 }) {
   return (
     <div className="root">
@@ -210,59 +216,54 @@ function Home({
             variant="temporary"
           />
         </AppBar>
-        {data.length > 0 ? (
-          <CardList data={data} />
-        ) : (
-          <div>
-            <div className="emptyData">
-              <img src={Empty} height={280} width={280} alt="" />
+        <div className="flex">
+          <Card className="info">
+            <CardContent>
+              <InputLabel htmlFor="departure" className="travel-radar-header">
+                Что это такое?
+              </InputLabel>
+              <InputLabel htmlFor="departure" className="travel-radar-info">
+                Это монитор дешевыех туров, он показывает выгодные предложения
+                от туроператоров. Слева в меню расположены простые фильтры:
+                выбирайте город вылета и страны для отдыха и получайте самые
+                дешевые варианты. Через 5 минут картина может измениться; вы
+                увидите это сами. Без звонков турагенту, без поиска по сайтам,
+                без суеты.
+              </InputLabel>
+            </CardContent>
+          </Card>
+          {loading ? (
+            <div className="loading">
+              <CircularProgress size={100} />
             </div>
-            <InputLabel htmlFor="departure" className="input-label">
-              Упс. Мы не нашли дешевых туров по вашему запросу, попробуйте
-              ослабить фильтры.
-            </InputLabel>
-            <InputLabel htmlFor="departure" className="input-label">
-              Если ничего не помогает, поищите туры напрямую на сайте{" "}
-              <a
-                href="https://c26.travelpayouts.com/click?shmarker=67204.zen&promo_id=660&source_type=customlink&type=click&custom_url=https%3A%2F%2Flevel.travel%2F"
-                className="link"
-              >
-                level.travel
-              </a>
-            </InputLabel>
-          </div>
-        )}
-        {/* <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          open={notificationVisibility}
-          onClose={() => setVisibilityNotification(false)}
-          SnackbarContentProps={{
-            "aria-describedby": "message-id"
-          }}
-          autoHideDuration={3000}
-          message={
-            <span id="message-id">
-              Последние настройки фильтров были восстановлены
-            </span>
-          }
-        /> */}
+          ) : (
+            <div>
+              {data.length > 0 ? (
+                <CardList data={data} />
+              ) : (
+                <div>
+                  <div className="emptyData">
+                    <img src={Empty} height={280} width={280} alt="" />
+                  </div>
+                  <InputLabel htmlFor="departure" className="input-label">
+                    Упс. Мы не нашли дешевых туров по вашему запросу, попробуйте
+                    ослабить фильтры.
+                  </InputLabel>
+                  <InputLabel htmlFor="departure" className="input-label">
+                    Если ничего не помогает, поищите туры напрямую на сайте{" "}
+                    <a
+                      href="https://c26.travelpayouts.com/click?shmarker=67204.zen&promo_id=660&source_type=customlink&type=click&custom_url=https%3A%2F%2Flevel.travel%2F"
+                      className="link"
+                    >
+                      level.travel
+                    </a>
+                  </InputLabel>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </MuiThemeProvider>
-      {/* <Snackbar
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "center"
-        }}
-        open={upd}
-        onClose={() => onCloseNot()}
-        SnackbarContentProps={{
-          "aria-describedby": "message-id"
-        }}
-        autoHideDuration={4000}
-        message={<span id="message-id">База данных туров обновлена</span>}
-      /> */}
     </div>
   );
 }
@@ -278,3 +279,39 @@ export default compose(
   }),
   pure
 )(Home);
+
+{
+  /* <Snackbar
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center"
+        }}
+        open={upd}
+        onClose={() => onCloseNot()}
+        SnackbarContentProps={{
+          "aria-describedby": "message-id"
+        }}
+        autoHideDuration={4000}
+        message={<span id="message-id">База данных туров обновлена</span>}
+      /> */
+}
+
+{
+  /* <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center"
+          }}
+          open={notificationVisibility}
+          onClose={() => setVisibilityNotification(false)}
+          SnackbarContentProps={{
+            "aria-describedby": "message-id"
+          }}
+          autoHideDuration={3000}
+          message={
+            <span id="message-id">
+              Последние настройки фильтров были восстановлены
+            </span>
+          }
+        /> */
+}
