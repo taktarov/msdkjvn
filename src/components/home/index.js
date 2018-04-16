@@ -149,6 +149,7 @@ function Home({
                     <MenuItem value={"Санкт-Петербург"}>
                       Санкт-Петербург
                     </MenuItem>
+                    <MenuItem value={"Казань"}>Казань</MenuItem>
                   </Select>
                 </div>
                 <div className="filter-item">
