@@ -109,7 +109,7 @@ function Home({
               color="inherit"
               className="drawer-toolbar"
             >
-              TOURRADAR
+              Тур Радар
             </Typography>
             {/* <img src={TourRadar} height={40} alt="" className="logo" /> */}
           </Toolbar>
