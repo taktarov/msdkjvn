@@ -217,21 +217,6 @@ function Home({
           />
         </AppBar>
         <div className="flex">
-          <Card className="info">
-            <CardContent>
-              <InputLabel htmlFor="departure" className="travel-radar-header">
-                Что это такое?
-              </InputLabel>
-              <InputLabel htmlFor="departure" className="travel-radar-info">
-                Это монитор дешевыех туров, он показывает выгодные предложения
-                от туроператоров. Слева в меню расположены простые фильтры:
-                выбирайте город вылета и страны для отдыха и получайте самые
-                дешевые варианты. Через 5 минут картина может измениться; вы
-                увидите это сами. Без звонков турагенту, без поиска по сайтам,
-                без суеты.
-              </InputLabel>
-            </CardContent>
-          </Card>
           {loading ? (
             <div className="loading">
               <CircularProgress size={100} />
