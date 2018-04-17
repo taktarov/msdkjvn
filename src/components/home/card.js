@@ -50,7 +50,12 @@ function tourCard({
       <Card className="card">
         <CardMedia className="media" image={imageUrl} title="" />
         <CardContent>
-          <Typography gutterBottom variant="headline" component="h2">
+          <Typography
+            gutterBottom
+            variant="headline"
+            component="h3"
+            class="where"
+          >
             {changeName(from)} - {changeName(to)}
           </Typography>
           <div>

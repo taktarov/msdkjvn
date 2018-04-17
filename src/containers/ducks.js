@@ -27,7 +27,13 @@ const arrivalCity = localStorage.getItem("arrivalCity");
 export const TURN_OFF_LOADING = ducks.defineType("TURN_OFF_LOADING");
 export const turnOffLoading = ducks.createAction(TURN_OFF_LOADING);
 
-TURN_OFF_LOADING;
+export const HANDLE_CLOSE_MODAL = ducks.defineType("HANDLE_CLOSE_MODAL");
+export const handleCloseModal = ducks.createAction(HANDLE_CLOSE_MODAL);
+
+export const HANDLE_OPEN_MODAL = ducks.defineType("HANDLE_OPEN_MODAL");
+export const handleOpenModal = ducks.createAction(HANDLE_OPEN_MODAL);
+
+handleCloseModal;
 
 const initialState = fromJS({
   drawerOpened: false,
@@ -40,7 +46,8 @@ const initialState = fromJS({
   data: {},
   countriesList: [],
   not: false,
-  loading: true
+  loading: true,
+  modalVisibility: false
 });
 
 export default ducks.createReducer(
@@ -54,6 +61,8 @@ export default ducks.createReducer(
     },
 
     [TURN_OFF_LOADING]: state => state.setIn(["loading"], false),
+    [HANDLE_CLOSE_MODAL]: state => state.setIn(["modalVisibility"], false),
+    [HANDLE_OPEN_MODAL]: state => state.setIn(["modalVisibility"], true),
     [SET_ARRIVAL_CITY]: (state, { payload }) => {
       localStorage.setItem("arrivalCity", JSON.stringify(Array.from(payload)));
       return state
@@ -65,7 +74,9 @@ export default ducks.createReducer(
         .setIn(["data"], payload)
         .setIn(
           ["countriesList"],
-          Array.from(new Set(output(payload).map(item => item.to || item.To)))
+          Array.from(
+            new Set(output(payload).map(item => item.to || item.To))
+          ).sort()
         )
         .setIn(["not"], true)
         .setIn(["loading"], false)

@@ -8,6 +8,12 @@ import Badge from "material-ui/Badge";
 import Typography from "material-ui/Typography";
 import Drawer from "material-ui/Drawer";
 import Select from "material-ui/Select";
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from "material-ui/Dialog";
 import IconButton from "material-ui/IconButton";
 import Input, { InputLabel } from "material-ui/Input";
 import MenuIcon from "material-ui-icons/Menu";
@@ -49,7 +55,10 @@ Home.propTypes = {
   arrivalCity: arrayOf(string),
   data: arrayOf(object),
   upd: bool,
-  loading: bool
+  loading: bool,
+  handleCloseModal: func.isRequired,
+  handleOpenModal: func.isRequired,
+  modalVisibility: bool
 };
 
 Home.defaultProps = {
@@ -60,7 +69,8 @@ Home.defaultProps = {
   arrivalCity: [],
   data: [],
   upd: false,
-  loading: true
+  loading: true,
+  modalVisibility: false
 };
 
 function Home({
@@ -77,7 +87,10 @@ function Home({
   setVisibilityNotification,
   upd,
   onCloseNot,
-  loading
+  loading,
+  handleCloseModal,
+  modalVisibility,
+  handleOpenModal
 }) {
   return (
     <div className="root">
@@ -90,6 +103,7 @@ function Home({
                 color="inherit"
                 aria-label="Menu"
                 onClick={() => onOpenDrawer()}
+                disabled={loading}
               >
                 <MenuIcon />
               </IconButton>
@@ -99,6 +113,7 @@ function Home({
                   className="menuButton"
                   color="inherit"
                   aria-label="Menu"
+                  disabled={loading}
                   onClick={() => onOpenDrawer()}
                 >
                   <MenuIcon />
@@ -117,6 +132,13 @@ function Home({
             >
               Тур Радар
             </Typography>
+            <IconButton
+              className="ask"
+              color="inherit"
+              onClick={handleOpenModal}
+            >
+              <HelpIcon />
+            </IconButton>
             {/* <img src={TourRadar} height={40} alt="" className="logo" /> */}
           </Toolbar>
           <Drawer
@@ -231,8 +253,7 @@ function Home({
                     <img src={Empty} height={280} width={280} alt="" />
                   </div>
                   <InputLabel htmlFor="departure" className="input-label">
-                    Упс. Измените город отправления или  
-                    сбросьте фильтры.
+                    Упс. Измените город отправления или сбросьте фильтры.
                   </InputLabel>
                   <InputLabel htmlFor="departure" className="input-label">
                     Если ничего не помогает, поищите туры напрямую на сайте{" "}
@@ -247,6 +268,33 @@ function Home({
               )}
             </div>
           )}
+        </div>
+        <div className="flex-modal">
+          <Dialog
+            open={modalVisibility}
+            onClose={handleCloseModal}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Что это такое?"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Это монитор дешевыех туров, он показывает выгодные предложения
+                от туроператоров. Слева в меню расположены простые фильтры:
+                выбирайте город вылета и страны для отдыха и получайте самые
+                дешевые варианты. Через 5 минут картина может измениться; вы
+                увидите это сами. Без звонков турагенту, без поиска по сайтам,
+                без суеты.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseModal} color="primary" autoFocus>
+                Понятно
+              </Button>
+            </DialogActions>
+          </Dialog>
         </div>
       </MuiThemeProvider>
     </div>

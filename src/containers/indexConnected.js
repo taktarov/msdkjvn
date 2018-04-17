@@ -6,7 +6,9 @@ import {
   closeDrawer,
   setDeparureCity,
   setArrivalCity,
-  closeNot
+  closeNot,
+  handleCloseModal,
+  handleOpenModal
 } from "./ducks";
 import { bindActionCreators } from "redux";
 import Home from "../components/home/index";
@@ -26,7 +28,8 @@ const mapStateToProps = state => ({
       )
     )
   ),
-  countriesList: Array.from(state.travelApp.get("countriesList"))
+  countriesList: Array.from(state.travelApp.get("countriesList")),
+  modalVisibility: state.travelApp.get("modalVisibility")
 });
 
 const mapDispatchToProps = dispatch =>
@@ -36,7 +39,9 @@ const mapDispatchToProps = dispatch =>
       onCloseDrawer: closeDrawer,
       onSetDepartureCity: setDeparureCity,
       onSetArrivalCity: setArrivalCity,
-      onCloseNot: closeNot
+      onCloseNot: closeNot,
+      handleCloseModal: handleCloseModal,
+      handleOpenModal: handleOpenModal
     },
     dispatch
   );
