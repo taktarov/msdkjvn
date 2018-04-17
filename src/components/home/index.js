@@ -231,8 +231,8 @@ function Home({
                     <img src={Empty} height={280} width={280} alt="" />
                   </div>
                   <InputLabel htmlFor="departure" className="input-label">
-                    Упс. Мы не нашли дешевых туров по вашему запросу, попробуйте
-                    ослабить фильтры.
+                    Упс. Измените город отправления или  
+                    сбросьте фильтры.
                   </InputLabel>
                   <InputLabel htmlFor="departure" className="input-label">
                     Если ничего не помогает, поищите туры напрямую на сайте{" "}
