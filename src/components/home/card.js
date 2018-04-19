@@ -48,7 +48,7 @@ function tourCard({
   return (
     <div>
       <Card className="card">
-        <CardMedia className="media" image={imageUrl} title="" />
+        
         <CardContent>
           <Typography
             gutterBottom
@@ -82,7 +82,7 @@ function tourCard({
             </Typography>
           </Link>
           <Typography component="p" class="agent">
-            {provider}
+            найден {provider}
           </Typography>
         </CardActions>
       </Card>
