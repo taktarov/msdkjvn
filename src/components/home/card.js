@@ -3,6 +3,7 @@ import { compose, pure } from "recompose";
 import Card, { CardContent, CardMedia, CardActions } from "material-ui/Card";
 import { Link } from "react-router-dom";
 import FlightTakeoff from "material-ui-icons/FlightTakeoff";
+import Tooltip from 'material-ui/Tooltip';
 import QueryBuilder from "material-ui-icons/QueryBuilder";
 import Typography from "material-ui/Typography";
 import Button from "material-ui/Button";
@@ -59,11 +60,15 @@ function tourCard({
             {changeName(from)} - {changeName(to)}
           </Typography>
           <div>
+            <Tooltip id="tooltip-qb" title="Продолжительность тура" placement="top">
             <QueryBuilder />
+            </Tooltip>
             <Typography component="p" class="description-date">
               {nights} {nights > 3 ? "ночей" : "ночи"}
             </Typography>
+            <Tooltip id="tooltip-takeoff" title="Дата вылета" placement="top">
             <FlightTakeoff className="icon" />
+            </Tooltip>
             <Typography component="p" class="description-date">
               {moment(departure, "DD-MM").format("Do MMMM")}
             </Typography>

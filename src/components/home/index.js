@@ -137,7 +137,9 @@ function Home({
               color="inherit"
               onClick={handleOpenModal}
             >
-              <HelpIcon />
+              
+              <HelpIcon className="infoButtonMenu"/>
+              
             </IconButton>
             {/* <img src={TourRadar} height={40} alt="" className="logo" /> */}
           </Toolbar>
