@@ -1,17 +1,46 @@
 .root {
   flex-grow: 1;
+  background-color: white;
+  height: 100%;
 }
-.drawer-toolbar {
+
+.pallete {
+  background: #4527a0; /* Old browsers */
+  background: -moz-linear-gradient(
+    -45deg,
+    #4527a0 0%,
+    #4527a0 50%,
+    #de47ac 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    #4527a0 0%,
+    #4527a0 50%,
+    #de47ac 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    #4527a0 0%,
+    #4527a0 50%,
+    #de47ac 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4527a0', endColorstr='#de47ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+
 .flex {
   flex: 1;
+  margin-top: 60px;
 }
-.input-label {
-  width: 280px;
-  margin-left: 10px;
-  display: block;
-  margin: auto;
+
+.loading {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex: 1;
 }
+
 .menuButton {
   margin-left: -12px;
   margin-right: 20px;
@@ -21,23 +50,13 @@
   font-size: 24px;
 }
 
-.filter-item {
-  display: block;
-  margin-top: 30px;
-}
-
-.select-item {
-  margin-left: 17px;
-  margin-right: 17px;
-  width: 280px;
-}
-
 .badge {
   & span {
     left: -24px;
     top: -26px;
   }
 }
+
 .emptyData {
   display: flex;
   justify-content: center;
@@ -57,31 +76,6 @@
 .logo {
   left: 14px;
   position: relative;
-}
-
-.close {
-  left: 28px;
-  top: 16px;
-  position: relative;
-}
-
-.reset {
-  left: 56px;
-  top: 50px;
-  position: relative;
-}
-
-.drawer {
-  overflow-x: hidden;
-  height: 100%;
-}
-
-.cancel {
-  width: 60.5%;
-}
-
-.bestDrawer:nth-child(2) {
-  height: 100%;
 }
 
 .loading {
@@ -128,4 +122,125 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+}
+
+.flex-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.reset-button {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 5px;
+  & button {
+    background-color: #cccccc;
+  }
+  height: 60%;
+  align-self: center;
+}
+
+.apply-filters-button {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 5px;
+  & button {
+    background-color: #4527a0;
+  }
+  height: 60%;
+  align-self: center;
+}
+
+.filter-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.nights-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.month-item {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.filters {
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(249, 249, 249, 0.6) 100%
+  ) !important; /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(249, 249, 249, 0.6) 100%
+  ) !important; /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(249, 249, 249, 0.6) 100%
+  ) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', endColorstr='#99f9f9f9',GradientType=1 ) !important; /* IE6-9 fallback on horizontal gradient */
+  padding-right: 21px !important;
+  margin-top: 0px !important;
+}
+
+.filterIcon {
+  color: black;
+}
+
+@media (max-width: 490px) {
+  .filter-list {
+    flex-direction: column;
+    align-content: center;
+  }
+  .reset-button {
+    margin: 15px;
+    width: 130px;
+    height: 15px;
+  }
+
+  .apply-filters-button {
+    width: 130px;
+    margin: 15px;
+    height: 15px;
+  }
+
+  .nights-item {
+    padding: 10px;
+    max-width: 80%;
+  }
+
+  .filter-item {
+    padding: 10px;
+    max-width: 80%;
+  }
+
+  .month-item {
+    padding: 10px;
+    max-width: 80%;
+  }
+
+  .flex {
+    flex: 1;
+    margin-top: 60px;
+  }
 }

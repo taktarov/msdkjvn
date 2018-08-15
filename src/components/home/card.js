@@ -6,7 +6,6 @@ import FlightTakeoff from "material-ui-icons/FlightTakeoff";
 import Tooltip from 'material-ui/Tooltip';
 import QueryBuilder from "material-ui-icons/QueryBuilder";
 import Typography from "material-ui/Typography";
-import Button from "material-ui/Button";
 import { string, number } from "prop-types";
 import moment from "moment";
 import "moment/locale/ru";
@@ -20,7 +19,7 @@ tourCard.propTypes = {
   price: number,
   provider: string,
   departure: string,
-  imageUrl: ""
+  imageUrl: string
 };
 
 tourCard.defaultProps = {
@@ -49,7 +48,13 @@ function tourCard({
   return (
     <div>
       <Card className="card">
-        
+        <Link to={link} className="link" target="_blank">
+          <CardMedia
+            className="media"
+            image={imageUrl}
+
+          />
+        </Link>
         <CardContent>
           <Typography
             gutterBottom
@@ -61,13 +66,13 @@ function tourCard({
           </Typography>
           <div>
             <Tooltip id="tooltip-qb" title="Продолжительность тура" placement="top">
-            <QueryBuilder />
+              <QueryBuilder />
             </Tooltip>
             <Typography component="p" class="description-date">
               {nights} {nights > 3 ? "ночей" : "ночи"}
             </Typography>
             <Tooltip id="tooltip-takeoff" title="Дата вылета" placement="top">
-            <FlightTakeoff className="icon" />
+              <FlightTakeoff className="icon" />
             </Tooltip>
             <Typography component="p" class="description-date">
               {moment(departure, "DD-MM").format("Do MMMM")}

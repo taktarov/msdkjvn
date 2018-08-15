@@ -13,26 +13,25 @@ CardList.defaultProps = {
 };
 
 function CardList({ data }) {
-  return (
-    <div className="flex">
-      {data.length > 0
-        ? data.map(
-            item =>
-              item ? (
-                <Card
-                  from={item.from}
-                  to={item.to}
-                  nights={item.nights}
-                  link={item.link}
-                  price={item.price}
-                  provider={item.provider}
-                  departure={item.departure}
-                  imageUrl={item.imgurl}
-                />
-              ) : null
-          )
-        : null}
-    </div>
+  return (<div className="flex">
+    {data.length > 0
+      ? data.map((item, index) =>
+        item ? (
+          <Card
+            from={item.from}
+            to={item.to}
+            nights={item.nights}
+            link={item.link}
+            price={item.price}
+            provider={item.provider}
+            departure={item.departure}
+            imageUrl={item.imgurl}
+            key={index}
+          />
+        ) : null
+      )
+      : null}
+  </div>
   );
 }
 
